@@ -8,14 +8,18 @@
   font-family: "Ubuntu", sans-serif;
 }
 body {
-  margin: 0 auto;
-  background: rgba(254, 254, 254, 0.8);
+  background-color: #000000;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(../img/houblon.jpg);
+  background-size: cover;
+  margin: 0 ;
+  /* background: rgba(0, 0, 0,); */
   padding-bottom: 4rem;
-  color: #333;
+  color: #f4f0e9;
   overflow-x: hidden;
 }
 h1 {
   padding: 6rem 0 0 2.4rem;
+  color: #f4f0e9
 }
 a,
 a:visited {
@@ -28,8 +32,8 @@ button {
   cursor: pointer;
 }
 nav {
-  padding: 0.8rem 2.4rem;
-  background: rgba(255, 255, 255, 0.97);
+  padding: 0.1rem 2rem;
+  background: #f4f0e9;
   position: fixed;
   width: 100%;
   z-index: 2;
@@ -39,12 +43,12 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1050px;
+    /* max-width: 1050px; */
     margin: 0 auto;
 
     #logo {
-      height: 32px;
-      width: 66%;
+      height: 52px;
+      width: auto;
 
       img {
         height: 100%;
@@ -76,20 +80,21 @@ nav {
         transform: translate(-4px, -1px);
       }
       i {
+        color: #662c25;
         transition: 0.25s;
         cursor: pointer;
       }
       i:hover {
-        color: rgba(34, 34, 34, 0.65);
+        color: #f4f0e9;
       }
     }
   }
 }
 
 .home-container {
-  max-width: 1250px;
-  margin: 0 auto;
-  padding-left: 2.4rem;
+  margin: 0;
+  padding: 0 2.4rem;
+  
 
   @media screen and (max-width: 600px) {
     padding-left: 0.2rem;
@@ -99,13 +104,19 @@ nav {
     padding-left: 0;
   }
 
+  .search-container {
+    display: flex;
+    justify-content: center;
+  }
+
   #search {
-    margin: 1rem 1rem 2rem 0;
+    margin: 1rem 0px;
     height: 2.4rem;
     padding: 0 0.5rem;
     border-radius: 5px;
     transition: 0.4s ease;
     border: 2px solid rgba(51, 51, 51, 0.835);
+    width: 100%;
 
     &:focus {
       outline: none;
@@ -119,11 +130,13 @@ nav {
     .card-container {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
 
       .card {
         margin: 0.4rem 1rem 0.4rem 0;
-        background: rgb(255, 255, 255);
+        /* background: rgb(255, 255, 255); */
         border-radius: 4px;
+        border: 1px solid rgb(53, 53, 53);
         overflow: hidden;
         position: relative;
         box-shadow: 0 0px 6px rgba(51, 51, 51, 0.15);
@@ -149,6 +162,9 @@ nav {
 
         .img-container {
           overflow: hidden;
+          background-color: rgba(0, 0, 0, 0.650);
+          display: flex;
+          justify-content: center;
 
           img {
             height: 210px;
@@ -166,17 +182,18 @@ nav {
           transition: 0.6s;
           width: 100%;
           height: 75px;
-          background: linear-gradient(0deg, white 40%, transparent 100%);
+          background: linear-gradient(0deg, #f4f0e9 40%, transparent 100%);
 
           h3 {
             font-size: 1.2rem;
             padding-right: 4px;
+            color: #333;
           }
           span {
-            background: #2eb7eb;
+            background: #a80000;
+            color:rgb(255, 255, 255);
             font-weight: bold;
             padding: 4px 6px;
-            color: white;
             border-radius: 4px;
           }
         }
@@ -185,6 +202,7 @@ nav {
           align-items: center;
           justify-content: space-around;
           height: 40px;
+          background-color: #f4f0e9;
 
           i {
             padding: 3px 5px;
@@ -195,12 +213,15 @@ nav {
               animation: scaler 0.8s infinite linear;
             }
           }
+          .fa-heart {
+            color: #662c25;
+          }
           .fa-heart:hover {
-            color: rgba(251, 38, 38, 0.5);
+            color: rgb(251, 38, 38);
           }
           .fa-shopping-cart {
             font-size: 16px;
-            color: #2eb7eb;
+            color: #398f00;
 
             &:hover {
               filter: brightness(125%);
@@ -240,18 +261,18 @@ nav {
   }
   .shopping-cart {
     transition: 0.4s ease;
-    background: #2eb7eb;
+    background: #000000;
     color: white;
     padding: 1.4rem;
     border-radius: 4px;
     min-width: 290px;
     box-shadow: 0 1px 6px rgba(51, 51, 51, 0.25);
     height: 100%;
-    margin: -8rem 2.4rem 0 0;
+    margin: 0rem 2.4rem 0 0;;
 
     h2 {
       margin-bottom: 1rem;
-      color: #333;
+      color: #f4f0e9;
       text-align: center;
     }
     .item-group {
@@ -304,8 +325,8 @@ nav {
 
           img {
             height: 50px;
-            width: 50px;
-            border-radius: 50%;
+            width: auto;
+            border-radius: 10%;
             transform: scale(0);
             animation: img-scale 1s forwards;
 
@@ -352,7 +373,7 @@ nav {
           margin-left: 10px;
 
           h6 {
-            color: #333;
+            color: rgb(182, 182, 182);
           }
           .cart-icons {
             display: flex;
@@ -388,14 +409,14 @@ nav {
               font-size: 0.55rem;
               padding: 5px;
               margin: 0 2px;
-              background: white;
+              background: rgb(182, 182, 182);
               border-radius: 50%;
-              color: #2eb7eb;
+              color: #000000;
               transition: .3s ease;
 
               &:hover {
-                background: #222;
-                color: #2eb7eb;
+                background: rgb(75, 75, 75);
+                color: #a80000;
               }              
             }
           }
@@ -404,7 +425,7 @@ nav {
     }
     .grand-total {
       h6 {
-        color: #333;
+        color: rgb(182, 182, 182);
       }
       .total {
         display: flex;
@@ -459,14 +480,16 @@ nav {
   .item-anim {
     &-enter-active, 
     &-leave-active {
-      opacity: 1;
+      transform: scale(1);
       transition: .8s;
     }
-    &-enter,
+    &-enter {
+      transition: .8s
+    }
     &-leave-to {
-      opacity: 0;
-      transform: translateY(100px);
-      transition: .7s;
+      transform: scale(0);
+      /* transform: translateY(100px); */
+      transition: .4s;
     }
   }
 }

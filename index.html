@@ -21,28 +21,28 @@
       <div class="nav-container">
         <div id="logo">
           <router-link to='/'>
-            <img src="./assets/img/wish-logo-800.png" alt="logo" />
+            <img src="./assets/img/logo.png" alt="logo" />
           </router-link>
         </div>
 
         <ul id="icons">
-          <li>
+          <!-- <li>
             <router-link to='/user-settings'>
               <i class="fas fa-user"></i>
             </router-link>
-          </li>
+          </li> -->
           <li>
             <router-link to='/wish-list'>
               <i class="fas fa-heart"></i>
             </router-link>
             <span id="nav-not"></span>
           </li>
-          <li>
+          <!-- <li>
             <router-link to='/shopping-cart'>
 
               <i class="fas fa-shopping-cart"></i>
             </router-link>
-          </li>
+          </li> -->
         </ul>
       </div>
     </nav>
@@ -57,10 +57,13 @@
 
 
       <!-- search-bar -->
-      <input v-model="searchKey" type="search" id="search" placeholder="Rechercher..." autocomplete="off">
-      <span v-if="searchKey && filteredList.length >=1"> 
-        {{filteredList.length}} résultat<span v-if="filteredList.length >=2">s</span>
-      </span>
+      <div class="search-container">
+        <input v-model="searchKey" type="search" id="search" placeholder="Rechercher..." autocomplete="off">
+        <span v-if="searchKey && filteredList.length >=1"> 
+          {{filteredList.length}} résultat<span v-if="filteredList.length >=2">s</span>
+        </span>
+
+      </div>
 
 
 
@@ -78,7 +81,7 @@
             
             
             <div class="card-text">
-              <h3>{{ product.description }}</h3>
+              <h3>{{ product.name }}</h3>
               <span>{{ product.price }}€</span>
             </div>
             
@@ -86,11 +89,11 @@
               <div class="like-container">
                 <input 
                 type="checkbox" 
-                name="ckeckbox"
+                name="checkbox"
                 v-bind:id="product.id"
                 :value="product.id"
                 v-model="liked"
-                @click='setLikeCookie()'
+                v-on:click='addWished(product)'
                 />
                 <label v-bind:for="product.id">
                   <i class="fas fa-heart"></i>
@@ -112,15 +115,16 @@
             </div>
         </div>
 
+        <transition name="cart-anim">
         <div v-if="cart.length" class="shopping-cart" id="shopping-cart">
           <h2>Panier</h2>
-          <div class="item-group">
+          <transition-group name="item-anim" tag="div" class="item-group">
             <div v-for="product , id in cart" v-bind:key="product.id" class="item" >
               <div class="img-container">
                 <img v-bind:src="product.img" alt="">
               </div>
               <div class="item-description">
-                <h4>{{product.description}}</h4>
+                <h4>{{product.name}}</h4>
                 <p>{{product.price}}€</p>
               </div>
               <div class="item-quantity">
@@ -138,7 +142,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </transition-group>
           <div class="grand-total">
             <div class="total">
               <h2>Total</h2>
@@ -147,8 +151,22 @@
             <h6>Total article : {{itemTotalAmout}}</h6>
           </div>
         </div>
+      </transition>
       </div>
 
+    </div>
+  </script>
+
+  <script type="text/x-template" id='wishList'>
+    <div class="wish-list-container">
+      <h1>Work in progress</h1>
+      <ul v-for="beer in wished" class="wished">
+        <img v-bind:src="beer.img" alt="beer">
+        <li>{{beer.name}}</li>
+        <li>{{beer.tagline}}</li>
+        <li>{{beer.description}}</li>
+        <li>{{beer.price}}</li>
+      </ul>
     </div>
   </script>
 
