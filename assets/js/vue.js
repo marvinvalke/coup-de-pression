@@ -134,7 +134,7 @@ const products = [
     abv: 5.3,
   },
 ];
-/* const wished = ["hello"]; */
+const wished = ["hello"];
 
 const Home = {
   template: "#home",
@@ -218,10 +218,9 @@ const Home = {
     },
     // Function for wished
     addWished(beer) {
-      for (let i = 0; i < wished.length; i++) {
-        if (wished[i].id == beer.id) {
-          return console.log("argu");
-        }
+      let ids = wished.map((w) => w.id);
+      console.log(ids, beer.id)
+      if (!ids.includes(beer.id)) {
         wished.push({
           id: beer.id,
           name: beer.name,
@@ -231,7 +230,6 @@ const Home = {
           description: beer.description,
         });
       }
-
       this.setLikeCookie();
     },
   },
@@ -250,7 +248,7 @@ const WishList = {
   name: "WishList",
   data: () => {
     return {
-      wished:[],
+      wished,
     };
   },
 };
